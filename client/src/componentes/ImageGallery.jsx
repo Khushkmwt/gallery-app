@@ -1,3 +1,4 @@
+// ImageGallery.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import DeleteButton from './DeleteButton'; // Import DeleteButton component
@@ -6,18 +7,9 @@ const ImageGallery = () => {
     const [images, setImages] = useState([]);
 
     useEffect(() => {
-        const axiosInstance = axios.create();
-
-        // Add a request interceptor
-        axiosInstance.interceptors.request.use(function (config) {
-            console.log('Request URL:', config.url);
-            return config;
-        }, function (error) {
-            return Promise.reject(error);
-        });
-
-        axiosInstance.get('/api/image/show')
+        axios.get('/api/image/show')
             .then((response) => {
+                console.log(response.data)
                 setImages(response.data.data);
             })
             .catch((error) => {
