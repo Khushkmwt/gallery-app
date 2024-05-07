@@ -8,7 +8,7 @@ export default defineConfig({
       "/api": {
         target: "https://gallery-app-server2.vercel.app",
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '/api'),
+        rewrite: (path) => '/api' + path,
       }
     }
   },
